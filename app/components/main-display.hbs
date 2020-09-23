@@ -1,0 +1,27 @@
+
+<label for="names">Add a name</label>
+<input id="names" type="string" oninput={{action saveNameInput}} value={{newNameInput}}/>
+<br/>
+<label for="event">Add an Event</label>
+<input id="event" type="string" oninput={{action saveEventInput}} value={{newEventInput}}/>
+
+<br/>
+<label for="event">Add an Amount</label>
+<input id="event" type="string" oninput={{action saveAmountInput}} value={{newAmountInput}}/>
+
+<br/>
+
+<button type="submit"
+onclick={{action addToNameList}}>Add To List</button>
+
+
+<ul>
+{{#each this.nameList as |person index|}}
+
+    <li>{{person.Name}} {{person.Event}} {{USDollarFormat person.Amount}}
+        <button onclick={{action removeFromList index}}>-</button>
+    </li>
+    
+    
+{{/each}}
+</ul>
