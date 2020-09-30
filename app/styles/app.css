@@ -1,7 +1,23 @@
-.application {
+.center {
    text-align: center;
 }
 
-.contain {
-   text-align: center;
+.container {
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   width: 50%;
+   background: #eee;
+   margin: 0 auto;
+   position: relative;
+   text-align:center;
+}
+
+ul {
+   
+   list-style-position: inside;
+}
+
+.showOwed {
+   margin: 10px
 }
