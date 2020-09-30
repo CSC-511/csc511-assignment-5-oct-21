@@ -1,4 +1,4 @@
-
+<div class="application">
 <label for="names">Add a name</label>
 <input id="names" type="string" oninput={{action saveNameInput}} value={{newNameInput}}/>
 <br/>
@@ -8,20 +8,48 @@
 <br/>
 <label for="event">Add an Amount</label>
 <input id="event" type="string" oninput={{action saveAmountInput}} value={{newAmountInput}}/>
-
 <br/>
 
 <button type="submit"
 onclick={{action addToNameList}}>Add To List</button>
 
-
+<div>
 <ul>
 {{#each this.nameList as |person index|}}
 
-    <li>{{person.Name}} {{person.Event}} {{USDollarFormat person.Amount}}
+    <li>{{person.Name}} {{person.Event}} 
+        {{#if person.Amount}}{{USDollarFormat person.Amount}}{{/if}}
         <button onclick={{action removeFromList index}}>-</button>
     </li>
     
     
 {{/each}}
 </ul>
+</div>
+
+{{#if nameList}}
+    <button type="submit"
+    onclick={{action addAmounts}}>Tally Up</button>
+
+    
+{{/if}}
+
+
+{{#if isTallyUpClicked}}
+<p>The total Amount spent is {{USDollarFormat sumOfExpendages}}</p>
+<p>Each person should contribute {{USDollarFormat supposedIndividualContribution}}</p>
+
+<ul>
+{{#each this.nameList as |person index|}}
+    
+    {{!-- //{{InsertBorder person.AmountOwed}} --}}
+    <div style={{InsertBorder person.AmountOwed}}>
+    <p>{{person.Name}} 
+    {{USDollarFormat person.AmountOwed}}</p>
+    </div>
+    
+    
+{{/each}}
+</ul>
+{{/if}}
+</div>
