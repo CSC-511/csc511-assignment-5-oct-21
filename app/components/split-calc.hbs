@@ -1,0 +1,95 @@
+<h1 class = "main"> Lickety Split </h1>
+<div class = "main">
+    
+    <label for = "name"> Name</label><br>
+    <input
+        id = "name"
+        value = {{currentNameValue}}
+        type = "string"
+        oninput = {{action inputNameValue}}
+    >
+    
+    <button onclick={{action addToName currentNameValue }}>Add Participant</button><br>
+    <table class = "participant">
+    <ul class = "user">
+    {{#each this.nameList key = "index" as |name index| }}
+
+ 
+        <tr> 
+
+        <td>{{name.[0]}}</td>
+
+        <td>
+        <button class= 'buttonState' onclick={{action selectName index}}> Select </button>
+        <button onclick={{action deleteNameListAtIndex index}}> - </button>
+        </td>
+        
+        </tr>
+
+    {{/each}}
+    </ul>
+    </table>
+
+<p>
+    <label for="name">Add Spending Event</label><br>
+    <input class = "inputEvent"
+        id = "event"
+        value = {{currentEventValue}}
+        type = "string"
+        oninput = {{action inputEventValue}}
+    >
+
+    <label for="name">Cost</label>
+    <input class ="inputCost"
+        pattern="^\d*(\.\d{0,2})?$"
+        id = "price"
+        value = {{currentPriceValue}}
+        type = "string"
+        oninput = {{action inputPriceValue}}
+    >
+</p>
+
+
+<button onclick={{action addToList currentNameValue2 currentEventValue currentPriceValue }}>Add Event</button>
+<button onclick={{action deleteEventList}}>Clear List</button>
+
+
+
+<ul class = "eventList">
+    {{#each this.eventList key = "index" as |eventList index| }}
+        <li>
+
+        {{eventList.[0]}} paid {{displayDollar eventList.[2]}} for  {{eventList.[1]}}      
+        <button onclick={{action deleteEventListAtIndex index}}> - </button>
+
+        </li>
+    {{/each}}
+</ul>
+<table>
+<ul class = "paidList">
+    {{#each this.nameList key = "index" as |nameList index| }}
+
+    <tr> <td>{{nameList.[0]}}</td> <td> has contributed </td> <td>{{displayDollar nameList.[1]}} </td> </tr>   
+
+    {{/each}}
+
+</ul>
+</table>
+<table>
+<ul class = "owedList">
+    {{#each this.owedList key = "index" as |owedList index| }}
+
+        <tr>    
+        <td>{{owedList.[0]}}</td><td> {{checkOwed owedList.[1]}} </td>
+        <td><b class = {{if (checkValue owedList.[1]) "green" "red" }}> {{displayDollar owedList.[1]}}</b></td>
+        </tr>      
+
+
+    {{/each}}
+
+</ul>
+</table><br>
+    
+{{ calculate eventList}}
+
+</div>
