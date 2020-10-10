@@ -1,0 +1,32 @@
+<div class="center">
+{{#if nameList}}
+<p>
+    <button type="submit"
+    onclick={{action addAmounts}}>Tally Up</button>
+</p>
+    
+{{/if}}
+
+
+{{#if isTallyUpClicked}}
+<p>The total Amount spent is {{USDollarFormat sumOfExpendages}}</p> 
+
+<p>Each person should contribute {{USDollarFormat supposedIndividualContribution}}</p>
+
+<div class="container">
+<ul>
+{{#each this.nameList as |person index|}}
+    
+    <div class="showOwed" style={{InsertBorder person.AmountOwed}}>
+
+    <p>{{person.Name}} 
+    {{USDollarFormat person.AmountOwed}}</p>
+    </div>
+    
+    
+{{/each}}
+</ul>
+</div>
+
+{{/if}}
+</div>

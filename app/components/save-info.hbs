@@ -1,0 +1,22 @@
+
+<p>
+<label for="names">Add a name</label>
+<input names id="names" type="string" oninput={{action saveNameInput}} value={{newNameInput}}/>
+</p>
+
+
+<p>
+<label for="event">Add an Event</label>
+<input event id="event" type="string" oninput={{action saveEventInput}} value={{newEventInput}}/>
+</p>
+
+
+
+<p>
+<label for="event">Add an Amount</label>
+<input amount id="amount" type="string" oninput={{action saveAmountInput}} value={{newAmountInput}}/>
+</p>
+
+{{!-- newNameInput = this.newNameInput
+newEventInput = this.newEventInput
+newAmountInput = this.newAmountInput --}}

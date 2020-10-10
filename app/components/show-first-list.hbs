@@ -1,0 +1,11 @@
+<ul id = "person">
+{{#each this.nameList as |person index|}}
+    <p>
+    <li>{{person.Name}} {{person.Event}} 
+        {{#if person.Amount}}{{USDollarFormat person.Amount}}{{/if}}
+        <button onclick={{action removeFromList index}}>-</button>
+    </li>
+    </p>
+    
+{{/each}}
+</ul>
