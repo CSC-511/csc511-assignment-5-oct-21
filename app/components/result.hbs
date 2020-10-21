@@ -1,0 +1,16 @@
+<div class="result">
+    <ul>
+    {{#each this.listOfPeople key="@index" as |person index|}}
+      <li tabindex=3 aria-label="{{person.name}} Result">
+        <p>{{person.name}} contributed {{person.purchase}}$</p>
+        {{#if (gt person.purchase (split-cost listOfPeople))}}
+          <p style="color:green;">{{person.name}} is owed {{diff person.purchase (split-cost listOfPeople)}}$ from {{owes (split-cost listOfPeople) listOfPeople}}</p>
+        {{else if (eq person.purchase (split-cost listOfPeople)) }}
+          <p style="color:blue;">This person owe's nothing</p>
+        {{else}}
+          <p style="color:red;">{{person.name}} owes {{diff (split-cost listOfPeople) person.purchase}}$ to {{owed (split-cost listOfPeople) listOfPeople}}</p>
+        {{/if}}
+      </li>
+    {{/each}}
+    </ul>
+  </div>
