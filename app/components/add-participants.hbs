@@ -1,0 +1,17 @@
+    {{#if @participantsCanBeAdded}}
+        Participants:
+        <input data-test-participant-input id="name" type="string" value={{@currentParticipant}} oninput={{@changeParticipant}}/>
+        <button aria-label="Add one spending event for you" data-test-add-btn id="btnAdd" onclick={{@addToArrParticipants}}>Add Participant</button>
+    {{else}}
+        <p>You got 10 participants. Can't add more!</p>
+    {{/if}}
+
+    <p>List of Participants:</p>
+    <ul data-test-participants-list>
+        {{#each @arrParticipants as |participant|}}
+            <li>{{participant}}</li>
+        {{/each}}
+    </ul>
+
+
+{{!-- {{yield 'hello from add-part' testVal}} --}}

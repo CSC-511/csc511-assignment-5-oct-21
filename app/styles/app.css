@@ -1,0 +1,60 @@
+.center{
+    margin: auto;
+    width: 60%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+
+.red{
+    color: red;
+}
+
+.green{
+    color: green;
+}
+
+.black{
+    color: black;
+}
+
+.center{
+    margin: auto;
+    width: 60%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+
+h2{
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+}
+  
+table, th, td {
+    border: 1px solid black;
+}
+
+select{
+    width: 200px;
+}
+
+input[type=text], input[type=password] {   
+    width: 100%;   
+    margin: 8px 0;  
+    padding: 12px 20px;   
+    display: inline-block;   
+    border: 2px solid green;   
+    box-sizing: border-box;   
+} 
+
+.login-container { 
+    width: 30%;  
+    padding: 25px;   
+    background-color: lightblue;  
+}
+
+.btnSignOut{
+    float: right;
+}
