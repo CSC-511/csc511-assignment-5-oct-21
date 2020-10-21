@@ -1,0 +1,27 @@
+<div>
+<h1>Sign Up</h1>
+
+<p>
+<label for="userName">User Name</label>
+<input id="userName" type="string" oninput={{action saveUserNameInput}} value={{userNameInput}} />
+</p>
+
+{{#if this.invalidUserName }}
+<p>Username already taken</p>
+{{/if}}
+
+
+<p>
+<label for="password">Password</label>
+<input id="password" type="password" oninput={{action savePasswordInput}} value={{passwordInput}}/>
+</p>
+
+<p>
+<button type="submit"
+{{!-- {{#if this.validUserName == false}}
+disabled
+{{/if}} --}}
+onclick={{action submitCredentials}}>SignUp</button>
+</p>
+
+</div>

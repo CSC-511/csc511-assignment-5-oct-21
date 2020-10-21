@@ -1,3 +1,7 @@
+<SignUp/>
+<Login />
+
+{{#if this.isLoggedIn}}
 <div data-test-main-display>
 <div class="container">
 <p>
@@ -28,8 +32,8 @@ onclick={{action addToNameList}}>Add To List</button>
 
 <ShowFirstList 
  @nameList = {{this.nameList}}
- {{!-- @isTallyUpClicked = {{this.isTallyUpClicked}} --}}
- setIsTallyUp = {{this.setIsTallyUp}}
+ @isTallyUpClicked = {{this.isTallyUpClicked}}
+ @setIsTallyUp = {{this.setIsTallyUp}}
 />
 
 {{!-- {{#if nameList}}
@@ -70,3 +74,4 @@ onclick={{action addToNameList}}>Add To List</button>
 {{/if}}
 </div> --}}
 </div>
+{{/if}}

@@ -1,0 +1,31 @@
+{{#unless isLoggedIn}}
+<div>
+<h1>Login</h1>
+<p>
+<label for="userName">User Name</label>
+<input id="userName" type="string" oninput={{action saveUserNameInput}} value={{userNameInput}} />
+</p>
+
+
+<p>
+<label for="password">Password</label>
+<input id="password" type="password" oninput={{action savePasswordInput}} value={{passwordInput}}/>
+</p>
+
+<p>
+<button type="submit"
+
+onclick={{action checkCredentials}}>Login</button>
+</p>
+
+</div>
+{{/unless}}
+
+{{#if isLoggedIn}}
+<div>
+    <h1>Hello , {{this.userNameLoggedIn}}</h1>
+</div>
+
+<button 
+onclick={{action signOut}}>Log out</button>
+{{/if}}

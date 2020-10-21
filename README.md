@@ -9,6 +9,10 @@ The code stores the inputted people as an array of objects with the data of the 
 
 The result of the tally up is rendered with colored bordered boxes: green for people who is owed money, and red for people who owes money. 
 
+There is a bug in the application where once you calculate how much each person owes, once you take out a person and spending events, the last list will render the wrong information. 
+
+The current submission of the application is VERY broken. While the login and signup features function by pulling the loggedInUser data from local storage, the data itself does not render to the page. Also after you login, you'd have to refresh the page to see the current user logged in and the calculator app. Another issue is whenever you add a person/event, when you refresh the page and try to add a new event, it says that pushObject is not a function. I then realized that after each refresh, the data for the object gets turned into a new JSON, where I'd have to call the key again to populate it. This happens every refresh, eventually leading to a this.nameList.nameList.nameList...pushObject(value) call which is not the intended result. 
+
 
 
 ## Prerequisites

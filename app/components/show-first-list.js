@@ -16,6 +16,7 @@ export default class ShowFirstListComponent extends Component {
         this.nameList = this.args.nameList,
         this.isTallyUpClicked = this.args.isTallyUpClicked
         
+        
     }
 
     removeFromList(index){
