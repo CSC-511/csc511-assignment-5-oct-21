@@ -1,0 +1,16 @@
+<div class="result">
+    <ul>
+    {{#each this.listOfPeople key="@index" as |person index|}}
+      <li>
+        <p>{{person.name}} contributed {{person.purchase}}$</p>
+        {{#if (gt person.purchase (split-cost listOfPeople))}}
+          <p class='owed'>{{person.name}} is owed {{avg person.purchase (split-cost listOfPeople)}}</p>
+        {{else if (eq person.purchase (split-cost listOfPeople)) }}
+          <p>This person owe's nothing</p>
+        {{else}}
+          <p class='owes'>{{person.name}} owes {{avg (split-cost listOfPeople) person.purchase}}</p>
+        {{/if}}
+      </li>
+    {{/each}}
+    </ul>
+  </div> 

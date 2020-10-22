@@ -1,0 +1,58 @@
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+}
+.sign {
+    width: 300px;
+    margin: 0px auto 30px;
+    padding: 10px;
+    position: relative;
+    background-color: lightgoldenrodyellow;
+}
+.person {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.calculator{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.sign button{
+    width: 100%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    display: inline;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul {
+    list-style-type: none;
+  }
+
+
+.sign input{
+    width: 100%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    display: inline;
+  }
+
+.owes{
+    color: red;
+}
+.owed{
+    color: green;
+}

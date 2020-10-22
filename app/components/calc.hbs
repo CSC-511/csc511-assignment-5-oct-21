@@ -1,0 +1,11 @@
+<div class="calculator">
+    <ul id="people">
+    {{#each this.listOfPeople key="@index" as |person index|}}
+      <li>
+        {{person.name}}
+        <button class="clear" onclick={{action clearArrayIndex index}}>-</button>
+        <input class="number" placeholder={{person.purchase}} value={{current}} type="number" oninput={{action changeVal index}}>
+      </li>
+    {{/each}}
+    </ul>
+  </div> 
