@@ -1,0 +1,11 @@
+LOCAL STORAGE
+______________
+
+
+
+
+
+
+CALC_LOGIN_DATA_KEY = [{username, password, namesList{list of all data}, isLoggedIn}, {username, password, namesList{}, isLoggedIn},{username, password, namesList{}, isLoggedIn}]
+
+

@@ -1,6 +1,6 @@
 import Component from '@glimmer/component'
 import { tracked } from '@glimmer/tracking'
-import {localStorageHelper} from '../helpers/local-storage'
+import {localStorageUtil} from '../utils/local-storage'
 
 
 export default class MainDisplayComponent extends Component {
@@ -13,14 +13,16 @@ export default class MainDisplayComponent extends Component {
     @tracked sumOfExpendages
     @tracked supposedIndividualContribution
 
-    @tracked nameList = []
+    @tracked nameList = this.args.activeMember || []
+
+    //@tracked nameList = this.args.activeMember || []
 
     @tracked isLoggedIn
     @tracked userNameLoggedIn
 
     constructor(){
         super(...arguments)
-        this.localStorage = localStorageHelper()
+        this.localStorage = localStorageUtil()
 
         let localStorageData
 

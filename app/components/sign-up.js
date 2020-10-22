@@ -1,6 +1,6 @@
 import Component from '@glimmer/component'
 import { tracked } from '@glimmer/tracking'
-import {localStorageHelper} from '../helpers/local-storage'
+import {localStorageUtil} from '../utils/local-storage'
 
 
 export default class SignUpComponent extends Component {
@@ -10,7 +10,7 @@ export default class SignUpComponent extends Component {
 
     constructor(){
         super(...arguments)
-        this.localStorage = localStorageHelper()
+        this.localStorage = localStorageUtil()
 
         // if(localStorage.getItem('keyNameArray') == null)
         //     localStorage.setItem('keyNameArray' , '')
@@ -43,13 +43,14 @@ export default class SignUpComponent extends Component {
     }
 
     submitCredentials(){
-        if(this.userNameInput != null)
-           this.checkValidUserName(this.userNameInput)
+        // if(this.userNameInput != null)
+        //    this.checkValidUserName(this.userNameInput)
 
-        this.localStorage.addKeyName(this.userNameInput)
-
+        // this.localStorage.addKeyName(this.userNameInput)
+        if(!this.localStorage.checkIfUserExists(this.userNameInput, this.passwordInput))
+            this.localStorage.signUp(this.userNameInput, this.passwordInput)
         //clear inputs
-        //this.userNameInput = ''
+        this.userNameInput = ''
         this.passwordInput = ''
 
         //if(this.localStorage.checkIfUserExists(value)
