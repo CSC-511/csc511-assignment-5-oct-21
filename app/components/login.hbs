@@ -1,0 +1,33 @@
+<div>
+    {{#unless loggedIn}}
+    <div class="signin">
+        <label for="name"><b>Name:</b></label>
+        <input id="name" value={{currententValue}} type="string" oninput={{action changeValue}}>
+        <br>
+
+        <label for="password"><b>Password:</b></label>
+        <input id="password" value={{currententPassword}} type="string" oninput={{action changePassword}}>
+        <br>
+
+        <button class="add" onclick={{action signIn}}>Sign In</button>
+        <button class="add" onclick={{action signUp}}>Sign Up</button>
+
+        {{#if invalidPassword}}
+            <p>Invalid Password!</p>
+        {{else if invalidInput}}
+            <p>Input is required.</p>
+        {{/if}}
+
+    </div>
+
+    {{else}}
+        <nav>
+            <ul>
+                <li><button onclick={{action deleteAccount}}><b>Delete Account</b></button></li>
+                <li><button onclick={{action logout}}><b>Log Out</b></button></li>
+                <li class='usersName'><b>Hello, {{user.Username}}!</b></li>
+            </ul>
+        </nav>
+        <Base @user={{user}}/>
+    {{/unless}}
+</div> 

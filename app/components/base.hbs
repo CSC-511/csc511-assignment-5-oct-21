@@ -1,0 +1,17 @@
+<div>
+    <h1>Splitwise Calculator</h1>
+    <h3>Victoria Fischer</h3>
+
+    <p class='person'>Add a name to the splitwise calculator:</p>
+    <div class="person">
+    <input id="name" value={{currentVal}} type="string" oninput={{action changeValName}}>
+    <br>
+    </div>
+    
+    <button class="add center" onclick={{action addPerson}}>Add Person</button>
+    <button class="remove center" onclick={{action removeArray}}>Remove Array</button>
+    <br>
+    
+    <Calculator @splitwiseList={{splitwiseList}} @user={{user}} />
+    <Result @splitwiseList={{splitwiseList}} @user={{user}}/>
+</div> 

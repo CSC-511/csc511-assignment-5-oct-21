@@ -1,0 +1,11 @@
+<div class="calculator">
+    <ul id="people">
+    {{#each this.splitwiseList key="@index" as |person index|}}
+      <li>
+        {{person.name}}
+        <button onclick={{action removeArrayIndex index}}>-</button>
+        <input class="number" placeholder= {{person.purchase}} value={{current}} type="number" oninput={{action changeVal index}}>
+      </li>
+    {{/each}}
+    </ul>
+  </div> 
