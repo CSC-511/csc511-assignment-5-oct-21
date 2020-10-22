@@ -1,0 +1,123 @@
+*{
+    background-color: rgb(205, 205, 252);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h1, h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+}
+
+.owed{
+    color: green;
+}
+
+.owes{
+    color: red;
+}
+
+.owesNothing{
+    color: orange;
+}
+
+.person {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+input{
+    height: 25px;
+    margin-bottom: 10px;
+}
+
+.calculator{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.calculator ul {
+    list-style-type: lower-alpha;
+    padding: 0;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result ul{
+    list-style-type: none;
+    margin: auto;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+li {
+    padding: 5px;
+}
+
+.remove {
+    background-color: black;
+    color:white;
+    font-weight: 500;
+}
+
+.add {
+    background-color: black;
+    color:white;
+    font-weight: 500;
+}
+
+.center{
+    display: flex;
+    margin: auto;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.signin {
+    width: 300px;
+    margin: 0px auto 30px;
+    padding: 10px;
+    position: relative;
+}
+
+.signin input{
+    background-color: whitesmoke;
+}
+
+.signin input, .signin button{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+  }
+
+nav{
+    margin-bottom: 20px;
+    border-bottom: 5px dotted black;
+}
+
+nav ul {
+    list-style-type: none;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+nav li {
+    float: right;
+    display: inline;
+} 
+
+.usersName{
+    float: left;
+    display: inline;
+}
