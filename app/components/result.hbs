@@ -1,0 +1,18 @@
+<div class="result">
+   
+ <ul>
+    {{#each this.splitwiseList key="@index" as |person index|}}
+      <li>
+        <p>{{person.name}} paid a total of ${{person.payment}}</p>
+        {{#if (greaterThan person.payment (split-cost splitwiseList))}}
+          <p class='owed'>{{person.name}} is owed ${{isOwed person.payment (split-cost splitwiseList)}}</p>
+        {{else if (equals person.payment (split-cost splitwiseList)) }}
+          <p class='owesNothing'>{{person.name}} doesn't owe anything.</p>
+        {{else}}
+          <p class='owes'>{{person.name}} owes ${{isOwed (split-cost splitwiseList) person.payment}}</p>
+        {{/if}}
+      </li>
+    {{/each}}
+    </ul>
+
+  </div> 
