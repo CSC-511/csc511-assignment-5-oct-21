@@ -25,8 +25,12 @@
         <button class="add" onclick={{action signup}} tabindex=1>Sign Up</button>
         {{#if passwordError}}
         <p style="color:red">This Password Does Not Match This Username!</p>
-        {{else if nullError}}
+        {{/if}}
+        {{#if nullError}}
         <p style="color:red">Please input before submitting!</p>
+        {{/if}}
+        {{#if existsError}}
+        <p style="color:red">This Username Already Exists!</p>
         {{/if}}
     </div>
     {{else}}

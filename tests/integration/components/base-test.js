@@ -2,9 +2,16 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, fillIn, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { localStorageUtil, LOCAL_STORAGE_KEY_NAME,LOCAL_STORAGE_KEY_USERS } from '../utils/local-storage';
 
 module('Integration | Component | base', function(hooks) {
   setupRenderingTest(hooks);
+  let testUser = {
+    Username: this.currentValue,
+    Password: this.currentPassword,
+    isLoggedIn: true,
+    calcList: []
+  }
 
   test('Renders', async function(assert) {
     // Set any properties with this.set('myProperty', 'value');
@@ -16,13 +23,10 @@ module('Integration | Component | base', function(hooks) {
   });
 
   test('Adds people to list', async function(assert) {
-    const user = {
-      Username: this.currentValue,
-      Password: this.currentPassword,
-      isLoggedIn: true,
-      calcList: []
-  }
-    await render(hbs`<Base @currentUser={{user}}></Base>`);
+    let  ls = localStorageUtil();
+    
+    ls.addUser(LOCAL_STORAGE_KEY_USERS,testUser);
+    await render(hbs`<Base></Base>`);
     await fillIn('#name','Test Value');
     //await fillIn('[add-person-input]','Test Value');
     await click('[add-person-button]');
@@ -93,4 +97,6 @@ module('Integration | Component | base', function(hooks) {
     const list = document.querySelector('ul#people');
     assert.equal(1, list.getElementsByTagName('li').length, 'Expected to only have 1 element in the list');
   });
+
+  this.localStorage.deleteUser(LOCAL_STORAGE_KEY_USERS, testUser);
 });

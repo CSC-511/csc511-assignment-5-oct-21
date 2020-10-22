@@ -8,8 +8,8 @@ export default class LoginComponent extends Component {
     @tracked isLoggedIn = false;
     @tracked currentUser;
     @tracked passwordError = false;
-    @tracked usernameError = false;
     @tracked nullError = false;
+    @tracked existsError = false;
     
 
     constructor(){
@@ -39,8 +39,10 @@ export default class LoginComponent extends Component {
             isLoggedIn: true,
             calcList: []
         }
-        
-        if(this.localStorage.getUser(LOCAL_STORAGE_KEY_USERS,user).Password === this.currentPassword){
+        if(!this.localStorage.userExists(LOCAL_STORAGE_KEY_USERS,user)){
+            this.passwordError = true;
+        }
+        else if(this.localStorage.getUser(LOCAL_STORAGE_KEY_USERS,user).Password === this.currentPassword){
             this.currentUser = this.localStorage.getUser(LOCAL_STORAGE_KEY_USERS,user);
             let logged = {isLoggedIn: true};
             Object.assign(this.currentUser, logged);
@@ -56,6 +58,7 @@ export default class LoginComponent extends Component {
     }
 
     signup(){
+        this.clearErrors();
         if(this.currentValue == "" || this.currentPassword == ""){
             this.nullError = true;
             return;
@@ -72,13 +75,14 @@ export default class LoginComponent extends Component {
             this.isLoggedIn = true;
         }
         else{
-            this.nullError = true;
+            this.existsError = true;
         }
         
         this.currentValue = '';
         this.currentPassword = '';
     }
     logout(){
+        this.clearErrors();
         this.isLoggedIn = false;
         let logged = {isLoggedIn: false};
         Object.assign(this.currentUser, logged);
@@ -86,6 +90,7 @@ export default class LoginComponent extends Component {
     }
 
     delete(){
+        this.clearErrors();
         this.localStorage.deleteUser(LOCAL_STORAGE_KEY_USERS, this.currentUser);
         this.logout();
     }
@@ -95,5 +100,11 @@ export default class LoginComponent extends Component {
     }
     changePassword(event){
         this.currentPassword = event.target.value.replace(/\s+/g, '');
+    }
+
+    clearErrors(){
+        this.passwordError = false;
+        this.nullError = false;
+        this.existsError = false;
     }
 }
