@@ -1,0 +1,12 @@
+	<div>
+    <h1 tabindex=1>SplitWise App Daniel Dolan Version</h1>
+    <div class="person">
+    <input add-person-input id="name" value={{currentValue}} type="string" oninput={{action changeValueName}}>
+    <br>
+    <button onclick={{action addPerson}}>Add Person</button>
+    <button onclick={{action deleteUsers}}>Delete All Users</button>
+    <br>   
+    </div>
+    <Calc @listOfPeople={{listOfPeople}} @currentUser={{currentUser}} />
+    <Owe @listOfPeople={{listOfPeople}} @currentUser={{currentUser}}/>
+</div> 

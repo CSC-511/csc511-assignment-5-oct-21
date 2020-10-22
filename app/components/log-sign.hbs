@@ -1,0 +1,44 @@
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Righteous&display=swap" rel="stylesheet">
+<div>
+    {{#unless isLogged}}
+    <div  class="sign">
+        <label for="name"><b>UserName:</b></label>
+        <input id="name" value={{currentValue}} type="string" oninput={{action changeValue}}>
+        <br>
+        <label for="password"><b>Password:</b></label>
+        <input id="password" value={{currentPassword}} type="string" oninput={{action changePassword}}>
+        <br>
+        <button class="add" onclick={{action login}} >Login</button>
+        <button class="add" onclick={{action signup}}>Sign Up</button>
+        {{#if noCombo}}
+        <h3>This combination is invalid</h3>
+        {{else if nullError}}
+        <p>Please input before submitting!</p>
+        {{/if}}
+    </div>
+    {{else}}
+    <div class="container-fluid bg-success"> 
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="http://localhost:4200/">Dolan <i class="fas fa-dumbbell"></i></a>             
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ml-5">
+              <button class="delete" onclick={{action delete}}>Delete User</button>
+          </li>
+          <li class="nav-item ml-5">
+            <button class="delete" onclick={{action logout}} >Log Out</button>
+        </li>
+        <li><b>Welcome {{currentUser.Username}}</b></li>
+          </ul>
+      </div>
+      </nav>
+    </div>
+    <Base @currentUser={{currentUser}}/>
+    {{/unless}}
+</div> 
