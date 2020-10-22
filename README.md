@@ -1,57 +1,17 @@
-# assignment-3-final
+# assignment-5-final
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+In this project I cloned my previous Spltitwise Calculator. 
 
-## Prerequisites
+I rendered a sign in page that allows users to log in with their correct user name and
+password. If they don't have one, they can sign up. After logging in, the user has access to
+the splitwise calculator app.
 
-You will need the following things properly installed on your computer.
+Once logged in, they can choose to log out or delete their account entirely. If they delete their
+account they cannot sign in with their username or password unless they create a new account.
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
-* [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
+If they refresh the page, the user will still be signed in and be able to use the splitwise 
+calculator, and their data will be saved.
 
-## Installation
+Local storage stores the user's name and password as well as the data stored in the calculator if they wish to return at a later time. 
 
-* `git clone <repository-url>` this repository
-* `cd assignment-3-final`
-* `npm install`
 
-## Running / Development
-
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Linting
-
-* `npm run lint:hbs`
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
