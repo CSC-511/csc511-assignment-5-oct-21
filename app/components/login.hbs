@@ -1,0 +1,46 @@
+<div>
+    {{#unless isLoggedIn}}
+    <div login-test class="login">
+        <label for="name"><b>Name:</b></label>
+        <input login-input
+            id="name"
+            value={{currentValue}}
+            type="string"
+            oninput={{action changeValue}}
+            aria-label="Username"
+            tabindex=1
+        >
+        <br>
+        <label for="password"><b>Password:</b></label>
+        <input login-password
+            id="password"
+            value={{currentPassword}}
+            type="string"
+            oninput={{action changePassword}}
+            aria-label="Password"
+            tabindex=1
+        >
+        <br>
+        <button class="add" onclick={{action login}} tabindex=1>Login</button>
+        <button class="add" onclick={{action signup}} tabindex=1>Sign Up</button>
+        {{#if passwordError}}
+        <p style="color:red">This Password Does Not Match This Username!</p>
+        {{/if}}
+        {{#if nullError}}
+        <p style="color:red">Please input before submitting!</p>
+        {{/if}}
+        {{#if existsError}}
+        <p style="color:red">This Username Already Exists!</p>
+        {{/if}}
+    </div>
+    {{else}}
+    <nav>
+        <ul>
+            <li><button delete-button class="delete" onclick={{action delete}} tabindex=1>Delete User</button></li>
+            <li><button logout-button class="delete" onclick={{action logout}} tabindex=1>Log Out</button></li>
+            <li><b>{{currentUser.Username}}</b></li>
+        </ul>
+    </nav>
+    <Base @currentUser={{currentUser}}/>
+    {{/unless}}
+</div>

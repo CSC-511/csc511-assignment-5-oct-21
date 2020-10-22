@@ -1,0 +1,25 @@
+<div>
+    <h1 tabindex=1>Universal Cost Splitter</h1>
+    <div class="person">
+    <input add-person-input
+        id="name"
+        value={{currentValue}}
+        type="string"
+        oninput={{action changeValueName}}
+        aria-label="Add Person"
+        tabindex=1
+    >
+    <br>
+    <button add-person-button class="add" onclick={{action addPerson}} tabindex=1>Add Person</button>
+    <button clear-person-button class="clear" onclick={{action clearArray}} tabindex=1>Clear Array</button>
+    <br>
+    {{#if tooManyError}}
+        <p style="color:red">Cannot have more than 10 names!</p>
+    {{else if uniqueError}}
+        <p style="color:red">Name must be unique!</p>
+    {{/if}}
+    </div>
+
+    <Calculator @listOfPeople={{listOfPeople}} @currentUser={{currentUser}} />
+    <Result @listOfPeople={{listOfPeople}} @currentUser={{currentUser}}/>
+</div>

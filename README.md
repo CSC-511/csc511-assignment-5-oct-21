@@ -1,7 +1,6 @@
-# assignment-3-final
+# assignment-5-final
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is a Cost Breakdown Calculator, A user must create a new account or log into an existing in order to use the calculator.  They can then add names to a list as well as their contributions to an overall total. The app will take in these inputs and output what each person owes or is owed dynamically.  The user can log out and their calculator will be saved even if they sign into a new account.  This App has been updated with ARIA for screenreader accessability.  
 
 ## Prerequisites
 

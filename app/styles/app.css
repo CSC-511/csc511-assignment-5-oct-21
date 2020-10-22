@@ -1,0 +1,94 @@
+div{
+    background-color:  #bfbfbf;
+}
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2cm;
+    margin: 0px;
+}
+.person {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+input{
+    height: 25px;
+    border-radius: 10px;
+}
+
+.calculator{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.calculator ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: #cccccc;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result ul{
+    list-style-type: none;
+    padding: 0;
+    background-color:  #d9d9d9;
+    width: 30%;
+}
+
+li {
+    padding: 5px;
+}
+
+button.clear {
+    background-color:  #B30000;
+    border-radius: 10px;
+    color:white;
+}
+button.add {
+    background-color:  #24613D;
+    border-radius: 10px;
+    color:white;
+}
+
+.login {
+    width: 300px;
+    margin: 0px auto 30px;
+    padding: 10px;
+    position: relative;
+}
+
+.login input, .login button{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+nav{
+    border-bottom: 1px solid black;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+nav li {
+    float: right;
+    display: inline;
+}
