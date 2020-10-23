@@ -8,6 +8,9 @@ export default class SignUpComponent extends Component {
     @tracked passwordInput
     @tracked invalidUserName = false
 
+    @tracked userExists = false
+    @tracked accountCreated = false
+
     constructor(){
         super(...arguments)
         this.localStorage = localStorageUtil()
@@ -48,11 +51,15 @@ export default class SignUpComponent extends Component {
 
         // this.localStorage.addKeyName(this.userNameInput)
         if(!this.localStorage.checkIfUserExists(this.userNameInput, this.passwordInput))
+        {
             this.localStorage.signUp(this.userNameInput, this.passwordInput)
-        //clear inputs
-        this.userNameInput = ''
-        this.passwordInput = ''
+            this.userNameInput = ''
+            this.passwordInput = ''
+            this.userExists = true
+            this.accountCreated = true
+        }
+        else
+            this.userExists = true
 
-        //if(this.localStorage.checkIfUserExists(value)
     }
 }

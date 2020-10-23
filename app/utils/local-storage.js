@@ -3,12 +3,6 @@
 export const localStorageUtil = function () {
     var ls = {};
 
-    let keyNameArray = []
-    let isLoggedIn = false
-    let userLoggedIn
-
-    //ls.signUp = (key)
-
     ls.hasData = function (key) {
         return !!localStorage[key] && !!localStorage[key].length
         //return localStorage.getItem(key)
@@ -64,61 +58,6 @@ export const localStorageUtil = function () {
     ls.remove = function (key) {
         localStorage.removeItem(key)
     }
-
-    ls.addKeyName = (value) => {
-        console.log("The value" , value)
-        console.log("before the push")
-        keyNameArray.push(value)
-        console.log("after")
-        console.log("hereeeee" , keyNameArray)
-        
-
-        //let string = 'keyNameArray'
-        //localStorage.getItem(string)
-        //console.log('hasData' , ls.hasData(string))
-        //console.log('hasData' , this.hasData("keyNameArray"))
-        //if(localStorage.hasData('keyNameArray'))
-        //{
-        //ls.extend("keyNameArray", value)
-        //}
-
-        // if(this.hasData('keyNameArray')) {
-
-        //     var _value = this.getItem('keyNameArray');
-        //     Object.assign(_value, JSON.stringify(value))
-        //     this.set('keyNameArray', _value)
-        // }
-
-        if(localStorage.getItem('keyNameArray'))
-        {
-            var _value = localStorage.getItem('keyNameArray')
-
-            // _value.forEach(element => {
-            //     _new.push(element)
-            // })
-            let _new = keyNameArray.concat(_value)
-           
-            localStorage.setItem('keyNameArray' , JSON.stringify(_new))
-
-            // this.isLoggedIn = true
-            // userLoggedIn = value
-
-            // console.log(userLoggedIn)
-            // this.setUserLoggedIn(value)
-
-        }
-
-        else
-            localStorage.setItem('keyNameArray' , JSON.stringify(keyNameArray))
-        //console.log('localStorage.getItem("keyNameArray"))' , localStorage.getItem("keyNameArray"))
-
-        //this.set('keyNameArray' , JSON.stringify(keyNameArray))
-    }
-
-    // ls.setUserLoggedIn = (userName) => {
-    //     console.log("in set user logged in" , userLoggedIn)
-    //     this.userLoggedIn = userName
-    // }
 
     ls.checkIfUserExists = (userNameVal , passwordVal) => {
         let _usersList = JSON.parse(localStorage[LOCAL_STORAGE_KEY_ALL_USERS])
@@ -225,7 +164,7 @@ export const localStorageUtil = function () {
         localStorage.setItem(LOCAL_STORAGE_KEY_CURRENT_USER, JSON.stringify(_currentUser))
     }
 
-    ls.removeRecord = function(nameList){
+    ls.addNewRecord = function(nameList){
         let _currentUser = JSON.parse(localStorage[LOCAL_STORAGE_KEY_CURRENT_USER])
         let _allUsersList = JSON.parse(localStorage[LOCAL_STORAGE_KEY_ALL_USERS])
 
@@ -242,21 +181,6 @@ export const localStorageUtil = function () {
         localStorage.setItem(LOCAL_STORAGE_KEY_ALL_USERS, JSON.stringify(_allUsersList))
         localStorage.setItem(LOCAL_STORAGE_KEY_CURRENT_USER, JSON.stringify(_currentUser))
     }
-
-    ls.getIsLoggedIn = () => {
-        return isLoggedIn
-    }
-
-    ls.setUserLoggedIn = (value) => {
-        userLoggedIn = value
-    }
-
-    ls.getUserLoggedIn = () => {
-        return userLoggedIn 
-    }
-
-    
-
 
     return ls
 }

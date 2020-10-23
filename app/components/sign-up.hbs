@@ -6,7 +6,7 @@
 <input id="userName" type="string" oninput={{action saveUserNameInput}} value={{userNameInput}} />
 </p>
 
-{{#if this.invalidUserName }}
+{{#if this.userExists }}
 <p>Username already taken</p>
 {{/if}}
 
@@ -23,5 +23,9 @@ disabled
 {{/if}} --}}
 onclick={{action submitCredentials}}>SignUp</button>
 </p>
+
+{{#if this.accountCreated }}
+<p>Account Created! Can Login.</p>
+{{/if}}
 
 </div>

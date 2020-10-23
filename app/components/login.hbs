@@ -20,6 +20,10 @@ onclick={{action checkCredentials}}>Login</button>
 
 </div>
 
+{{#if this.invalidCredentials}}
+    Invalid Credentials, Try Again.
+{{/if}}
+
 {{/unless}}
 
 {{#if isLoggedIn}}

@@ -12,6 +12,8 @@ export default class LoginComponent extends Component {
 
     @tracked localStorageData 
 
+    @tracked invalidCredentials = false
+
     constructor(){
         super(...arguments)
         this.localStorage = localStorageUtil()
@@ -37,13 +39,9 @@ export default class LoginComponent extends Component {
         let _userInfo
         if(this.localStorage.checkIfUserExists(this.userNameInput, this.passwordInput))
         {
-            
-            //localStorage.setItem('isLoggedIn' , true)
-            this.isLoggedIn = true
-            //this.args.isLoggedIn = true
-            
 
-            //this.localStorage.setIsLoggedIn(true)
+            this.isLoggedIn = true
+           
 
             this.localStorage.setCurrentUser(this.userNameInput)
             this.args.setIsLoggedIn(true)
@@ -63,14 +61,16 @@ export default class LoginComponent extends Component {
             this.userNameLoggedIn = this.userNameInput  
             this.userNameInput  = ''
             this.passwordInput = ''
+            this.invalidCredentials = false
 
         }
 
         else 
         {
-            localStorage.setItem('isLoggedIn' , false)
+            //localStorage.setItem('isLoggedIn' , false)
             this.isLoggedIn = this.localStorageData.isLoggedIn
             this.args.setIsLoggedIn(false)
+            this.invalidCredentials = true
         }
 
     }
