@@ -1,4 +1,4 @@
-{{#unless isLoggedIn}}
+{{#unless this.isLoggedIn}}
 <div>
 <h1>Login</h1>
 <p>
@@ -19,6 +19,7 @@ onclick={{action checkCredentials}}>Login</button>
 </p>
 
 </div>
+
 {{/unless}}
 
 {{#if isLoggedIn}}

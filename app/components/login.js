@@ -1,6 +1,6 @@
 import Component from '@glimmer/component'
 import { tracked } from '@glimmer/tracking'
-import {localStorageUtil} from '../utils/local-storage'
+import {localStorageUtil, LOCAL_STORAGE_KEY_CURRENT_USER} from '../utils/local-storage'
 
 
 export default class LoginComponent extends Component {
@@ -10,26 +10,16 @@ export default class LoginComponent extends Component {
     @tracked showSignOut = false
     @tracked userNameLoggedIn
 
+    @tracked localStorageData 
+
     constructor(){
         super(...arguments)
         this.localStorage = localStorageUtil()
         this.localStorage.init()
-        
-            // if(isLoggedIN === true)
-            // this.activeMember = data[i]
-        // if(localStorage.getItem('keyNameArray') == null)
-        //     localStorage.setItem('keyNameArray' , '')
 
-        // if(localStorage.getItem('isLoggedIn') == null)
-        //     localStorage.setItem('isLoggedIn' , '')
-        // else
-        //     this.isLoggedIn = localStorage.getItem('isLoggedIn')
-        
-        // if(localStorage.getItem('userNameLoggedIn') == null)
-        //     localStorage.setItem('userNameLoggedIn' , '')
-        // else 
-        //     this.userNameLoggedIn = localStorage.getItem('userNameLoggedIn')
-
+        this.localStorageData = this.localStorage.get(LOCAL_STORAGE_KEY_CURRENT_USER)
+        this.isLoggedIn = this.localStorageData.isLoggedIn
+        this.userNameLoggedIn = this.localStorageData.username
     }
 
     saveUserNameInput(event){
@@ -44,52 +34,56 @@ export default class LoginComponent extends Component {
     }
 
     checkCredentials(){
+        let _userInfo
         if(this.localStorage.checkIfUserExists(this.userNameInput, this.passwordInput))
         {
-            let currentUser
+            
             //localStorage.setItem('isLoggedIn' , true)
             this.isLoggedIn = true
+            //this.args.isLoggedIn = true
+            
 
             //this.localStorage.setIsLoggedIn(true)
 
             this.localStorage.setCurrentUser(this.userNameInput)
+            this.args.setIsLoggedIn(true)
 
-            //localStorage.setItem('userNameLoggedIn' , this.userNameInput)
-            // currentUser = this.localStorage.setCurrentUser(this.userNameInput)
-            //OBJECT NOT RETURNING RIGHT FROM SETCURRENTUSER IN LOCALSTORAGE UTIL
-            console.log("what was returned" , this.localStorage.setCurrentUser(this.userNameInput))
-           // this.userNameLoggedIn = currentUser.username
-            console.log("Account that is currently logged in: " , this.userNameLoggedIn)
+            _userInfo = this.localStorage.get(LOCAL_STORAGE_KEY_CURRENT_USER)
+
+            this.args.setNewNameList(_userInfo.nameList)
+            
+
+            //this.userNameLoggedIn = JSON.parse(localStorage[LOCAL_STORAGE_KEY_CURRENT_USER])
+            //currentUser = this.localStorage.getCurrentUser()
+            // console.log("user double check" , currentUser.username)
+            // console.log("logged in user now" , currentUser)
+
             this.localStorage.setIsLoggedIn(this.userNameInput, true)
             
             this.userNameLoggedIn = this.userNameInput  
             this.userNameInput  = ''
             this.passwordInput = ''
 
-            // this.localStorage.setIsLoggedIn(true)
-            // this.localStorage.setUserLoggedIn(this.userNameInput)
-
-            // console.log("In Login js" , this.localStorage.getIsLoggedIn())
-            // console.log("In Login js" , this.localStorage.getUserLoggedIn())
         }
 
         else 
         {
             localStorage.setItem('isLoggedIn' , false)
-            this.isLoggedIn = false
+            this.isLoggedIn = this.localStorageData.isLoggedIn
+            this.args.setIsLoggedIn(false)
         }
 
-
-        // this.userNameInput = ''
-        // this.passwordInput = ''
     }
 
     signOut(){
-        localStorage.setItem('isLoggedIn' , false)
-        localStorage.setItem('userNameLoggedIn' , '')
+        // localStorage.setItem('isLoggedIn' , false)
+        // // localStorage.setItem('userNameLoggedIn' , '')
 
-        this.localStorage.setIsLoggedIn(false)
+        this.localStorage.setIsLoggedIn(this.userNameLoggedIn , false)
+        localStorage.setItem(LOCAL_STORAGE_KEY_CURRENT_USER, '')
+        
         this.isLoggedIn = false
         this.userNameLoggedIn = ''
+        this.args.setIsLoggedIn(false)
     }
 }

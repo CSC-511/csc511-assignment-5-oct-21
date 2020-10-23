@@ -1,5 +1,11 @@
+{{#unless this.isLoggedIn}}
 <SignUp/>
-<Login />
+
+{{/unless}}
+<Login 
+@setIsLoggedIn = {{this.changeLoginState}}
+@setNewNameList = {{this.changeNameList}}
+/>
 
 {{#if this.isLoggedIn}}
 <div data-test-main-display>
@@ -32,6 +38,7 @@ onclick={{action addToNameList}}>Add To List</button>
 
 <ShowFirstList 
  @nameList = {{this.nameList}}
+ @isLoggedIn = {{this.isLoggedIn}}
  @isTallyUpClicked = {{this.isTallyUpClicked}}
  @setIsTallyUp = {{this.setIsTallyUp}}
 />
@@ -48,6 +55,8 @@ onclick={{action addToNameList}}>Add To List</button>
 <ShowSecondList 
 @nameList = {{this.nameList}}
 @isTallyUpClicked = {{this.isTallyUpClicked}}
+ @isLoggedIn = {{this.isLoggedIn}}
+
 />
 
 {{!-- <div class="center">

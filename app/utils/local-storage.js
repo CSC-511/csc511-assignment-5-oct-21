@@ -97,8 +97,7 @@ export const localStorageUtil = function () {
             //     _new.push(element)
             // })
             let _new = keyNameArray.concat(_value)
-            //Object.assign(keyNameArray , _value)
-            // _new.pop()
+           
             localStorage.setItem('keyNameArray' , JSON.stringify(_new))
 
             // this.isLoggedIn = true
@@ -174,11 +173,19 @@ export const localStorageUtil = function () {
             {
                 localStorage.setItem(LOCAL_STORAGE_KEY_CURRENT_USER, JSON.stringify(_usersList[index]) )
                 console.log("Im sending this" , _usersList[index])
-                return _usersList[index]
+                //return _usersList[index]
             }
         })
 
         
+    }
+
+    ls.getCurrentUser = function(){
+        let _currentUser = localStorage.getItem(LOCAL_STORAGE_KEY_CURRENT_USER)
+
+        JSON.parse(_currentUser)
+        console.log("what I'm sending as response" , _currentUser)
+        return(_currentUser)
     }
 
     ls.setIsLoggedIn = (userName, boolValue) => {
@@ -198,6 +205,42 @@ export const localStorageUtil = function () {
 
         localStorage.setItem(LOCAL_STORAGE_KEY_ALL_USERS, JSON.stringify(_allUsersList) )
         localStorage.setItem(LOCAL_STORAGE_KEY_CURRENT_USER, JSON.stringify(_currentUser) )
+    }
+
+    ls.addNewRecord = function(nameList){
+        let _currentUser = JSON.parse(localStorage[LOCAL_STORAGE_KEY_CURRENT_USER])
+        let _allUsersList = JSON.parse(localStorage[LOCAL_STORAGE_KEY_ALL_USERS])
+
+        Object.keys(_allUsersList).forEach(index => {
+           
+            if(_currentUser.username == _allUsersList[index].username)
+                _allUsersList[index].nameList = nameList
+                //localStorage.setItem(LOCAL_STORAGE_KEY_CURRENT_USER, JSON.stringify(_usersList[index]) )
+            
+        })
+
+        _currentUser.nameList = nameList
+
+        localStorage.setItem(LOCAL_STORAGE_KEY_ALL_USERS, JSON.stringify(_allUsersList))
+        localStorage.setItem(LOCAL_STORAGE_KEY_CURRENT_USER, JSON.stringify(_currentUser))
+    }
+
+    ls.removeRecord = function(nameList){
+        let _currentUser = JSON.parse(localStorage[LOCAL_STORAGE_KEY_CURRENT_USER])
+        let _allUsersList = JSON.parse(localStorage[LOCAL_STORAGE_KEY_ALL_USERS])
+
+        Object.keys(_allUsersList).forEach(index => {
+           
+            if(_currentUser.username == _allUsersList[index].username)
+                _allUsersList[index].nameList = nameList
+                //localStorage.setItem(LOCAL_STORAGE_KEY_CURRENT_USER, JSON.stringify(_usersList[index]) )
+            
+        })
+
+        _currentUser.nameList = nameList
+
+        localStorage.setItem(LOCAL_STORAGE_KEY_ALL_USERS, JSON.stringify(_allUsersList))
+        localStorage.setItem(LOCAL_STORAGE_KEY_CURRENT_USER, JSON.stringify(_currentUser))
     }
 
     ls.getIsLoggedIn = () => {
