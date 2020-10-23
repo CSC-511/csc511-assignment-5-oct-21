@@ -11,7 +11,7 @@ The result of the tally up is rendered with colored bordered boxes: green for pe
 
 There is a bug in the application where once you calculate how much each person owes, once you take out a person and spending events, the last list will render the wrong information. 
 
-The current submission of the application is VERY broken. While the login and signup features function by pulling the loggedInUser data from local storage, the data itself does not render to the page. Also after you login, you'd have to refresh the page to see the current user logged in and the calculator app. Another issue is whenever you add a person/event, when you refresh the page and try to add a new event, it says that pushObject is not a function. I then realized that after each refresh, the data for the object gets turned into a new JSON, where I'd have to call the key again to populate it. This happens every refresh, eventually leading to a this.nameList.nameList.nameList...pushObject(value) call which is not the intended result. 
+The current version pushed contains a new signup/login feature that will store information of the user's session in the browser's local storage. The calc app will render once successfully logged in and will retain information entered previously if refreshed or logged out/in again. Each user will have their work tracked once they log in to the account. 
 
 
 
