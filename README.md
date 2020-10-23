@@ -1,7 +1,6 @@
-# assignment-3-final
+# csc511-assignment-4-october-7
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This app is build onto assignment 4 (cost-break-down-calculator). Updated the app to use local storage from the users broswer. Sign In and Sign Up were two more added components. Users will need to create an account in order to use the calculator. Sign up will propt a different component where they can enter a user name, password and the same password for verification. If a user with the same username already exists then it will be prompted and the user will have to make a different username. All users spending events will be saved. If they refresh the page while logged in, the data will be saved. If the user logs out and logs back in at a later time, the data will still be saved. 
 
 ## Prerequisites
 
@@ -14,8 +13,8 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd assignment-3-final`
+* `git clone -b dansobolev --single-branch https://github.com/CSC-511/csc511-assignment-5-oct-21.git`
+* `cd csc511-assignment-5-oct-21`
 * `npm install`
 
 ## Running / Development

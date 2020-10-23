@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-center pdtp-50">
+    <div class="d-flex flex-column">
+        <ul data-test-spending-events-list>
+        {{#each @spendingEvents key="@index" as |sharedExpenses index|}}
+            <li class="text-white pdtb-10">
+                <button data-test-remove-btn id="remove-{{index}}" type="button" class="btn btn-danger" {{on "click" (fn removeExpense index)}} aria-label="Remove Event"><img src="https://image.flaticon.com/icons/png/512/61/61848.png" width="20" height="20" alt="remove"></button>
+                <span class="pdl-20 ftsz-20">{{sharedExpenses.name}} - Paid {{dollar-formatter sharedExpenses.spent}} for {{sharedExpenses.event}}</span>
+            </li>
+        {{/each}}
+        </ul>
+    </div>
+</div>
+
+{{yield}}
