@@ -1,0 +1,22 @@
+<p class="d-flex justify-content-center pdtp-50 text-white">{{this.signUpMessage}}</p><br> 
+<div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center">
+        <form class="container">
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="User Name" value={{userName}} oninput={{action updateUserName}} required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" placeholder="Password" value={{password}} oninput={{action updatePassword}} required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" placeholder="Verify Password" value={{passwordVer}} oninput={{action updatePasswordVer}} required>
+            </div>
+            <div class="d-flex justify-content-center">
+                <span class="pd-r-20"><button type="button" class="btn btn-success btn-lg" {{on "click" signUp}}>Sign Up</button></span>
+                <button type="button" class="btn btn-success btn-lg" {{on "click" goBack}}>Go Back</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{yield}}

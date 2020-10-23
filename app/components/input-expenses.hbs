@@ -1,0 +1,24 @@
+<p class="d-flex justify-content-center pdtp-50 text-white">{{this.addSpendingEventMessage}}</p><br> 
+<div class="d-flex justify-content-center pdtp-50">
+    <div class="d-flex justify-content-center">
+        <form class="container">
+            <div class="form-group">
+                <input data-test-name-input class="form-control" type="text" placeholder="Name" value={{name}} oninput={{action updateName}} required>
+            </div>
+            <div class="form-group">
+                <input data-test-event-input class="form-control" type="text" placeholder="Event" value={{event}} oninput={{action updateEvent}} required>
+            </div>
+            <div class="form-group">
+                <input data-test-spent-input class="form-control" type="text" placeholder="Spent" value={{spent}} oninput={{action updateSpent}} required>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button data-test-add-button type="button" class="btn btn-success btn-lg" {{on "click" this.addExpense}} disabled={{add-btn-disabled this.sharedExpenses this.name this.event this.spent}}>Add</button>
+            </div>
+        </form>
+    </div>
+</div>
+<SpendingEvents @spendingEvents={{this.sharedExpenses}} @updateSpendingEvents={{this.updateSharedExpenses}}/>
+<FinalList @spendingEvents={{this.sharedExpenses}}/>
+
+
+{{yield}}

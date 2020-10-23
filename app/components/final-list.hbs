@@ -1,0 +1,20 @@
+{{#if @spendingEvents}}
+    <div class="d-flex justify-content-center pdtp-50">
+        <button data-test-tally-up-btn type="button" class="btn btn-success btn-lg" {{on "click" this.tallyUp}} disabled={{tally-up-btn-disabled @spendingEvents}}>Tally Up</button>
+    </div>
+    <div class="d-flex justify-content-center pdtp-50">
+        <div class="d-flex flex-column">
+            <ul data-test-final-list>
+            {{#if this.finalList}}
+                {{#each this.finalList key="@index" as |person|}}
+                    <li class="font-weight-bold text-white pdtb-10 ftsz-20">
+                        {{person.name}}: <span class={{color-code person.owes}}>{{dollar-formatter person.owes}}</span>
+                    </li>
+                {{/each}}
+            {{/if}}
+            </ul>
+        </div>
+    </div>
+{{/if}}
+
+{{!-- {{yield}} --}}
