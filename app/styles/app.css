@@ -1,0 +1,112 @@
+*{
+	box-sizing: border-box;
+    font-family: Baskerville,  "serif";
+
+    
+}
+
+.main{
+  
+    margin: auto;
+
+    width: 345px;
+    border: 3px solid  #ffd9d9;
+    background-color: #fff5d5;
+    padding: 10px;
+}
+.second{
+  
+    margin: auto;
+
+    width: 280px;
+    border: 3px solid  #fff5d5;
+    background-color: #fff5d5;
+    padding: 10px;
+}
+.ul {
+    font-size: 8px;
+    display:block;
+    list-style-type: none;
+    width: 170px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+.user {
+    display:block;
+    width: 300px;
+    list-style-type: none;
+
+    padding: 0;
+    overflow: hidden;
+}
+.inputEvent {
+    display:block;
+    width: 170px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.inputCost {
+    display:block;
+    width: 170px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.owedList {
+    display:block;
+    width: 250px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.paidList {
+    display:block;
+    width: 250px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.red {
+    color: red;
+
+}
+.green{
+    color: green;
+}
+.ButtonState:active{
+    background-color: #e09f9f;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 1px;
+    padding: 2px;
+
+
+  }
+  
+  td, th {
+    text-align: left;
+    padding: 2px;
+ 
+  }
+button{
+    background-color:  #ffffff;
+    border-color:   #ffffff;
+}
+.buttonState:focus{
+    background-color:  #f7cdcd;
+    border-color:   #a19e9e;
+}
+.text-display{ font-size: smaller;
+
+}
+.top-bar{ text-align:right; width:100%; padding-right: 50px ;
+
+}

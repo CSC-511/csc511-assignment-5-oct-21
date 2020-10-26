@@ -1,0 +1,48 @@
+<body class="text-display">
+<ul aria-label="list of spending events"
+    class = "eventList">
+    {{#each @eventList key = "index" as |eventList index| }}
+        <li>
+
+        {{eventList.participant}} paid {{display-dollar eventList.priceEvent}} for  {{eventList.nameEvent}}      
+        
+        <button aria-label="delete {{eventList.nameEvent}} from the list "
+            onclick={{action @deleteEventListAtIndex index}}> - </button>
+
+        </li>
+    {{/each}}
+</ul>
+
+<table>
+<ul aria-label="list of people who contributed"
+    class = "paidList">
+    {{#each @nameList key = "index" as |nameList index| }}
+
+
+    <tr> <td>{{nameList.participant}}</td> <td> has contributed </td> <td>{{display-dollar nameList.owed}} </td> </tr>   
+
+    {{/each}}
+
+</ul>
+</table>
+
+<table>
+<ul aria-label="list of how much a person owes"
+    class = "owedList">
+    {{#each @owedList key = "index" as |owedList index| }}
+
+        <tr>
+        
+        <td>{{owedList.participant}}</td><td> {{check-owed owedList.owed}} </td>
+        <td><b class = {{if (check-value owedList.owed) "green" "red" }}> {{display-dollar owedList.owed}}</b></td>
+        </tr>      
+
+
+    {{/each}}
+</ul>
+</table>
+
+
+{{ calculate @eventList}}
+</body>
+

@@ -1,0 +1,47 @@
+<p>
+    <label 
+        aria-hidden="true"  
+        for="name">Add Spending Event
+    </label><br>
+    
+    <input 
+        aria-label="input text field for spending event name"
+        class = "inputEvent"
+        id = "event"
+        value = {{@currentEventValue}}
+        type = "string"
+        oninput = {{action @inputEventValue}}
+    >
+
+    <label
+        aria-hidden="true"   
+        for="name">Cost
+    </label>
+
+    <input
+        aria-label="input text field for spending event cost" 
+        class ="inputCost"
+        pattern="^\d*(\.\d{0,2})?$"
+        id = "price"
+        value = {{@currentPriceValue}}
+        type = "string"
+        oninput = {{action @inputPriceValue}}
+    >
+</p>
+
+<button
+    aria-label="add the person event and cost"  
+    onclick = {{action 
+                @addToList 
+                    @currentNameValue2 
+                    @currentEventValue 
+                    @currentPriceValue 
+           }}
+>Add Event
+</button>
+
+<button 
+    aria-label="deletes the entire spending list"  
+    onclick={{action @deleteEventList}}>
+Clear List
+</button>
