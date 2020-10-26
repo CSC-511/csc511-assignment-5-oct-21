@@ -1,0 +1,53 @@
+<body class= "main">
+<h1 aria-label="Application Title Lickety Split"  
+class = "second"> Lickety Split </h1>
+{{#if this.LoginFalse}} 
+<header>    
+<nav>
+
+
+  
+    <label aria-hidden="true"  for = "account"> Account</label><br>
+    <input aria-label="input text field for entering account"
+        id = "nameSignUp"
+        value = {{currentAccountValue}}
+        type = "string"
+        oninput = {{action inputAccountValue}}
+    
+    >
+    <br>
+
+    <label aria-hidden="true"  for = "password"> Password</label><br>
+    <input aria-label="input text field for entering password"
+        id = "passwordSignUp"
+        value = {{currentPasswordValue}}
+        type = "string"
+        oninput = {{action inputPasswordValue}}
+    >
+    <br><br>
+<button aria-label="sign up account" onclick={{action addAccount currentAccountValue currentPasswordValue }}>Sign Up Account</button><br>
+<br>
+<button aria-label="login account" onclick={{action loginAccount currentAccountValue currentPasswordValue }}>Login Account</button><br>
+  
+</nav>
+</header>
+{{/if}}
+
+
+{{#if this.LoginTrue}}
+<body class = 'top-bar'>
+<i>{{currentAccount}}</i>
+<button aria-label="signout account" onclick={{action signOutAccount }}>Sign Out</button>
+<button aria-label="delete account" onclick={{action deleteAccount }}>Delete</button><br>
+<button aria-label="clear account" onclick={{action clearAndSignOut }}>Sign Out and Clear</button><br>
+</body>
+  
+
+<SplitCalc
+
+@signOutAccount ={{this.signOutAccount}}
+@counter ={{this.counter}}
+
+/>
+{{/if}}
+</body>

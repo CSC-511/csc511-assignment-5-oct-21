@@ -1,0 +1,40 @@
+<button aria-label="adds name to list" onclick={{action @addToName @currentNameValue }}>Add Participant</button><br>
+
+    
+    <label aria-hidden="true"  for = "name"> Name</label><br>
+    <input aria-label="input text field for entering name"
+        id = "name"
+        value = {{@currentNameValue}}
+        type = "string"
+        oninput = {{action @inputNameValue}}
+    >
+  
+
+    <table aria-label="list of names" class = "participant">
+    <ul class = "user">
+    {{#each @localData.nameList key = "index" as |name index| }}
+    
+
+ 
+        <tr> 
+
+            <td>{{name.participant}}</td>
+
+            <td>
+            <button  aria-label="select {{name.participant}} from list" class= 'buttonState' 
+                onclick={{action @selectName index}}> Select </button>        
+            <button  aria-label="delete {{name.participant}} from list" 
+                onclick={{action @deleteNameListAtIndex index}}> - </button>        
+            </td>
+        
+        </tr>
+
+    {{/each}}
+        </ul>
+    </table>
+ 
+
+
+    
+
+    
