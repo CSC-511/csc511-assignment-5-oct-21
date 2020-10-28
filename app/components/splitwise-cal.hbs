@@ -1,0 +1,58 @@
+
+<div class="_outer_div">
+    <div class="_container">
+        <h3>Splitwise Calculator</h3>
+
+        <div>
+            <p class="note">Please Follow the Instructions in Red below</p>
+            
+            <p class="_instructions">*1: Enter Total Amount: $ {{totalAmt}} </p>
+            <input id="totalA" type="number" placeholder="$" value={{totalAmt}} oninput={{action setTotal}}>
+            <button onclick={{action getAmount}}>Enter</button>
+
+            <h5 class="_instructions">*2: Enter up to 10 Names. Each with an Activity and Amount Paid.</h5>
+            
+            <div class="_input_container">
+                <input required type="text" name="nameInput" placeholder="Enter Name" value={{currentName}} oninput={{action changeNameValue}} >
+                <input required type="text" placeholder="Activity" value= {{activityName}} oninput={{action updateActivity }}>
+                <input type="number" placeholder="Amount Paid" value={{entryAmt}} oninput={{action setAmount}}>
+                <button onclick={{action addToActivityList}} {{action addToList }} {{action addAmount}} class="_add">Add</button>
+            </div>
+            
+        </div>
+
+        <div class="_list_output">
+            <ul id="_listArr" class="_outer_ul">
+                {{#each-in this.myObj as |objects items| }}
+                        <ul class="_inner_ul">
+                            <li class="_inner_ul_li-identifier">{{objects}}:</li>
+
+                            {{#each items key = "@index" as |items index|}}
+                                <li class="_main_li"> 
+                                    {{ items }}                       
+                                    <button onclick={{action remove index}} class="_remove">-</button>
+                                </li> 
+                                <br>
+                            {{/each}}
+
+                        </ul>
+                {{/each-in}}   
+                
+            </ul> 
+        </div>
+        <p class="_instructions">*3: Click the button below to get Final Result. Note: It updates automatically when list is adjusted.</p>
+        <button onclick={{action tallyUp }}>Tally Up</button>
+
+        <div id="tallyUp-div" class="hide show">
+            <p>Since There are [ {{arrLen}} ] people in this party, and a total of $ {{ totalAmt}} was spent, that means each person is supposed to pay $ {{ eachAmt }} </p>
+        
+            {{#each this.amountList key="@index" as |list index|}}
+                    <p>Person {{index}} paid [${{list}}] : {{totalCheck list eachAmt}}</p>
+            {{/each}}
+
+        </div>
+
+    </div>
+</div>
+
+

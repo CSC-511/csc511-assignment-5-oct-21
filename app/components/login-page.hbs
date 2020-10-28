@@ -1,0 +1,30 @@
+<div>
+    {{#unless isLoggedIn}}
+    <div class="login_div">
+        <h3 class="login_h3">Login</h3>
+        <div>
+            <input required type="text" name="userId" value={{user_name}} placeholder="User_Id" oninput={{action getUsername}} >
+        </div>
+        <div>
+            <input required type="password" value={{pass_word}} name="userPassword" placeholder="Password" maxlength="8" oninput={{action getuserPassword}}>
+        </div>
+            <button onclick={{action userLogin}} >Login</button>
+            <p>or</p>
+            <button onclick={{action userSign_Up}}>Sign_Up</button>
+    </div>
+    
+        {{!-- Then calculator will show up --}}
+        {{else}}
+            <nav class="_navBar">
+                <ul>
+                    <li><h5>{{currAcct.userName}}</h5></li>
+                    <li><button onclick={{action logOut}}>LogOut</button></li>
+                    <li><button onclick={{action delAcct}}>Delete Acct</button></li>
+                </ul>
+            </nav>
+
+        <BaseApp @currAcct = {{currAcct}} />
+
+    {{/unless}}
+
+</div>
