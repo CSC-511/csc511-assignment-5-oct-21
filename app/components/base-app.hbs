@@ -1,0 +1,38 @@
+{{!-- {{yield}} --}}
+<div class="center">
+    You are login as: {{this.userName}} <br/>
+    <button class="btnSignOut" type="submit" onclick={{redirectToLoginPage}}>Sign out</button> 
+    <h2  aria-hidden="true" role="Student Name and Assignment ">Yeting Tan - HW #4</h2>
+    <h2  aria-hidden="true" role="Application name">Splitwise Application</h2>
+
+    <AddParticipants
+    @arrParticipants={{this.arrParticipants}} 
+    @participantsCanBeAdded={{participantsCanBeAdded}}
+    @currentParticipant={{this.currentParticipant}} 
+    @changeParticipant={{action changeParticipant}}
+    @addToArrParticipants={{action addToArrParticipants}}       
+    />
+    
+    <hr aria-hidden="true">
+
+    <AddSpendingEvents 
+    @rows={{this.rows}} 
+    @spendingEventsCanBeAdded={{this.spendingEventsCanBeAdded}} 
+    @currentSpendingEvent={{this.currentSpendingEvent}}
+    @currentPaidBy={{this.currentPaidBy}}
+    @currentExpense={{this.currentExpense}}
+    @changeSpendingEvent={{action changeSpendingEvent}}
+    @changeCurrentPaidBy={{action changeCurrentPaidBy}}
+    @changeCurrentExpense={{action changeCurrentExpense}}
+    @addRowtoEventsTable={{action addRowtoEventsTable}}
+    @spendingEventMoreThanTen={{this.spendingEventMoreThanTen}} 
+    @hasNoParticipant={{this.HasNoParticipant}}     
+    @removeEvent={{action removeRowFromEventsTable}}
+    />
+
+    <hr aria-hidden="true">
+    <ResultList 
+    @resultList= {{cost-breakdown-calc this.rows this.arrParticipants}}
+    /> 
+</div>
+

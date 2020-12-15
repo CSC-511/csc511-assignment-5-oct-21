@@ -1,0 +1,35 @@
+    
+    <p id="eventTbl">Spending Events Table:</p>
+    {{#if @spendingEventsCanBeAdded}}
+        <div id="lbl1">Spending events:</div>
+        <input aria-labelledby="eventTbl lbl1" data-test-currEvent-input id="event" type="string" value={{@currentSpendingEvent}} oninput={{@changeSpendingEvent}}/> <br> <br>
+        <div id="lbl2">Who Paid:</div>
+        <input aria-labelledby="eventTbl lbl2" data-test-currPaidBy-input id="paidBy" type="string" value={{@currentPaidBy}} oninput={{@changeCurrentPaidBy}}/> <br> <br>
+        <div id="lbl3">Expense:</div> 
+        $<input aria-labelledby="eventTbl lbl3" data-test-currExpense-input id="expense" type="number" value={{@currentExpense}} oninput={{@changeCurrentExpense}}/><br> <br>
+        
+        <button aria-label="Add one spending event for you" data-test-addEvent-btn onclick={{@addRowtoEventsTable}}>Add Spending Event</button>
+    {{else if @spendingEventMoreThanTen }}
+        <p>You got 10 spending events. Can't add more!</p>
+    {{else if @hasNoParticipant}}
+        <p>Enter at least 1 participant to display the ADD BUTTON for the spending Event</p>
+    {{/if}}
+
+    <hr aria-hidden="true">
+
+    <table role="grid" aria-label="Summary of the Spending events">
+        <tr>
+            <th>Spending Event</th>
+            <th>Paid By</th>
+            <th>Expense</th>
+            <th></th>
+        </tr>
+        {{#each @rows key="@index" as |row index|}}
+            <tr aria-rowindex={{index}} data-test-spendingevents-list>
+                <td>{{row.spendingEvent}}</td>
+                <td>{{row.paidBy}}</td>
+                <td>${{row.expense}}</td>
+                <td><button data-test-removeEvent-btn type="button" id="btnRemoveEvent" value={{index}} onclick={{@removeEvent}}>Delete</button></td>
+            </tr>            
+        {{/each}}
+    </table>

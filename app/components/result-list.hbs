@@ -1,0 +1,20 @@
+{{yield}}
+    <br>
+    <div>Result List:</div>
+        {{#each @resultList as |result|}}
+            {{result.name}}:
+            {{#if (eq result.owedMoney 0)}}
+                <div class="black">does not owe and is not owed </div>
+            {{else}}
+            <div data-test-font-color class={{if (gt result.owedMoney 0) "green" "red"}}>
+                {{#each result.transaction as |transaction index|}}
+                    {{#if (gt transaction.credit 0)}}
+                        is owed {{format-number transaction.credit}} by {{transaction.id}} and
+                    {{else}}
+                        owed {{transaction.id}} {{format-number transaction.credit}} 
+                    {{/if}} 
+                {{/each}}
+            </div>
+            {{/if}}
+        {{/each}}
+    <br>
